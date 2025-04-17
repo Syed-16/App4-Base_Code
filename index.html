@@ -37,36 +37,39 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <script>
 	//Copied and pasted App 3 script code and adjusted variable and function names to stomach flu or stomach flu//
-	var flu_count = 0;
-        var notflu_count = 0;
+	var stomachflu_count = 0;
+        var foodpoisoning_count = 0;
 	// The following code lets you know when the file was last modified. This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
 	var docMod = document.lastModified;
 	alert("This file last modified  " + docMod);
 	console.log("This file last modified  " + docMod);
 	// If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
-
-        function fluAdd(){
+	//Added result image variable//
+	var resultImage = document.getElementById("resultImage");
+	resultImage.style.display = "block";
+        
+	function stomachfluAdd(){
 	//Increases the count for stomach flu//
-            flu_count = flu_count + 1;
+            stomachflu_count = stomachflu_count + 1;
         }
 
-        function notFluAdd(){
+        function foodpoisoningAdd(){
 	//Increases the count for not having a stomach flu//
-            notflu_count = notflu_count + 1;
+            foodpoisoning_count = foodpoisoning_count + 1;
 	}
 	
 	function showResults(){
 		//Added function to display results to users//
 		var resultText = document.getElementById("resultsText");
-		//Calculates probability of allergy, probability of cold, and the total//
-		var fluPercent = ((flu_count/4) * 100);
-		var notFluPercent = ((notflu_count/4) * 100);
-		//This code indicates the probability of a percent diagnosis for either allergy or cold to occur//
-		resultText.innerHTML = "Probability it is stomach flu =" + fluPercent + "%" "<br> Probability it is not stomach flu =" + notFluPercent + "%";
+		//Calculates probability of stomach flu and probability of food poisoning//
+		var stomachfluPercent = ((stomachflu_count/6) * 100);
+		var foodpoisoningPercent = ((foodpoisoning_count/6) * 100);
+		//This code indicates the probability of a percent diagnosis for either stomach flu or food poisoning to occur//
+		resultText.innerHTML = "Probability it is stomach flu =" + stomachfluPercent + "%" "<br> Probability it is food poisoning =" + foodpoisoningPercent + "%";
 	}
 	function restartTest(){
-		flu_count = 0;
-		notflu_count = 0;
+		stomachflu_count = 0;
+		foodpoisoning_count = 0;
 		//Sends the user back to the start of the test//
 		window.location.href = "#";
 
@@ -74,7 +77,12 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 	
 <!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. DON'T MESS WITH IT -->
-<style>	
+<style>
+img, object {
+	max-height:90%;
+	max-width:90%;
+}
+
 .body {
      margin: 0em;
 }
@@ -94,12 +102,13 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     left: 0vw;
     z-index: 1;
 }
+
 </style>
 
 <body>
 	
 <div id="content" class="w3-container">
-	<p>Are you having stomach problems? Answer a few short questions to find out if you have the stomach flu!</p>
+	<p>Are you having stomach problems? Answer a few short questions to find out if you have the stomach flu or food poisoning!</p>
 	
 	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
 	
@@ -117,10 +126,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
     	<div id="content" class="w3-container">
 		<!-- Added Question 1-->
-		<p>Do you have abdominal pain or cramping in the abdominal area?</p>
+		<p>Do you have sharp abdominal pain?</p>
 	<!-- Add Yes and No button to answer Question 1-->
-        	<p> <a href="#two"  onclick="fluAdd();" class="w3-btn w3-black">Yes</a> </p>
-		<p> <a href="#two"  onclick="notFluAdd();" class="w3-btn w3-black">No</a> </p>
+        	<p> <a href="#two"  onclick="foodpoisoningAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#two"  onclick="stomachfluAdd();" class="w3-btn w3-black">No</a> </p>
     	</div>
 </div>
 
@@ -133,10 +142,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
     	<div id="content" class="w3-container">
 		<!-- Added Question 2-->
-		<p>Have you been feeling nauseous or vomiting?</p>
+		<p>Do you have body aches?</p>
 		<!-- Change href= to "three".-->
-        	<p> <a href="#three"  onclick="fluAdd();" class="w3-btn w3-black">Yes</a> </p>
-		<p> <a href="#three"  onclick="notFluAdd();" class="w3-btn w3-black">No</a> </p>
+        	<p> <a href="#three"  onclick="stomachfluAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#three"  onclick="foodpoisoningAdd();" class="w3-btn w3-black">No</a> </p>
 	</div>
 </div>
 	
@@ -149,10 +158,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
     	<div id="content" class="w3-container">
 		<!-- Added Question 3-->
-		<p>Do you have diarrhea?</p>
+		<p>Do you feel more thirsty than usual?</p>
 		<!-- Change href= to "four"-->
-        	<p> <a href="#four"  onclick="fluAdd();" class="w3-btn w3-black">Yes</a> </p>
-		<p> <a href="#four"  onclick="notFluAdd();" class="w3-btn w3-black">No</a> </p>
+        	<p> <a href="#four"  onclick="foodpoisoningAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#four"  onclick="stomachfluAdd();" class="w3-btn w3-black">No</a> </p>
 	</div>
 </div>
 	
@@ -167,13 +176,29 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		<!-- Added Question 4-->
 		<p>Have you been experiencing these symptoms for more than 48 hours?</p>
 		<!-- Change href= to "five"-->
-   		<p> <a href="#five"  onclick="fluAdd();" class="w3-btn w3-black">Yes</a> </p>
-		<p> <a href="#five"  onclick="notFluAdd();" class="w3-btn w3-black">No</a> </p>
+   		<p> <a href="#five"  onclick="foodpoisoningAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#five"  onclick="stomachfluAdd();" class="w3-btn w3-black">No</a> </p>
 	</div>
 </div>
-
-<!--Results page-->
+	
+<!-- Copy and paste page 1 code and change id to five-->
 <div class="page" id="five">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Question 5-->
+		<h1>Question 5</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<!-- Added Question 5-->
+		<p>Do your joints feel stiff?</p>
+		<!-- Change href= to "five"-->
+   		<p> <a href="#six"  onclick="stomachfluAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#six"  onclick="foodpoisoningAdd();" class="w3-btn w3-black">No</a> </p>
+	</div>
+</div>
+	
+<!--Results page-->
+<div class="page" id="six">
 	<div id="header" class="w3-container w3-flat-carrot">
 		<!-- Change text to Results-->
 		<h1>Results</h1>
@@ -182,7 +207,12 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     	<div id="content" class="w3-container w3-flat-carrot">
 		<!-- Added restart test button -->
 		<p id="resultsText"></p>
-		<p> <a href="#" onclick ="restartTest();" class="w3-btn w3-black"> Restart Test </a> </p>
+	
+	<img id="resultImage" src="https://patients.amwell.com/siteassets/blog/1200_amwell_stomachfluvsfoodpoisoning_blog.jpg"
+		alt="Stomach Flu vs Food Poisoning" style="display: none;">
+            <!-- Button to show the probability distribution of results -->
+            <a href="javascript:void(0);" onclick="showResults();" class="w3-btn w3-black">Get Results</a>
+		<p> <a href="#" onclick="restartTest();" class="w3-btn w3-black">Restart Test</a> </p>
 	</div>
 </div>
 		
