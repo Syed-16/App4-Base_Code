@@ -3,11 +3,10 @@
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
  
 THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
- hi
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Syed Akbar
  
 Further Information:
 http://diystream.cns.utexas.edu/
@@ -37,13 +36,40 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </head> 
 
 <script>
+	//Copied and pasted App 3 script code//
+	var allergy_count = 0;
+        var cold_count = 0;
 
-	//YOUR JAVASCRIPT GOES HERE
+        function allergyAdd(){
+	//Increases the count for allergy//
+	//Deleted the alert for allergy count//
+            allergy_count = allergy_count + 1;
+        }
+
+        function coldAdd(){
+	//Increases the count for cold//
+            cold_count = cold_count + 1;
+	}
+	
+	function showResults(){
+		//Added function to display results to users//
+		var resultText = document.getElementById("resultsText");
+		//Calculates probability of allergy, probability of cold, and the total//
+		var allergyPercent = ((allergy_count/6) * 100);
+		var coldPercent = ((cold_count/6) * 100);
+		//This code indicates the probability of a percent diagnosis for either allergy or cold to occur//
+		resultText.innerHTML = "Probability it is allergies =" + allergyPercent + "%" "<br> Probability it is a cold =" + coldPercent + "%";
+	}
+	function restartTest(){
+		allergy_count = 0;
+		cold_count = 0;
+		//Sends the user back to the start of the test//
+		window.location.href = "#";
 
 </script>	
 
-
-<!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. PROBABLY DONT MESS WITH IT -->
+	
+<!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. DON'T MESS WITH IT -->
 <style>	
 .body {
      margin: 0em;
@@ -69,7 +95,101 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <body>
 	
 	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
+	<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>S?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you having stomach problems? Answer a few short questions to find out if you have the stomach flu!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<!-- Copied and pasted App 3 code-->
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Question 1-->
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<!-- Added Question 1-->
+		<p>Do you have body aches?</p>
+	<!-- Add Yes and No button to answer Question 1-->
+        	<p> <a href="#two"  onclick="allergyAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#two"  onclick="coldAdd();" class="w3-btn w3-black">No</a> </p>
+    	</div>
+</div>
+
+<!-- Copy and paste page 1 code and change id to two-->
+<div class="page" id="two">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Question 2-->
+		<h1>Question 2</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<!-- Added Question 2-->
+		<p>Do you have an itchy nose?</p>
+		<!-- Change href= to "three".-->
+        	<p> <a href="#three"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#three"  onclick="allergyAdd();" class="w3-btn w3-black">No</a> </p>
+	</div>
+</div>
+	
+<!-- Copy and paste page 1 code and change id to three-->	
+<div class="page" id="three">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Question 3-->
+		<h1>Question 3</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<!-- Added Question 3-->
+		<p>Do you have a sore throat?</p>
+		<!-- Change href= to "four"-->
+        	<p> <a href="#four"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#four"  onclick="allergyAdd();" class="w3-btn w3-black">No</a> </p>
+	</div>
+</div>
+	
+<!-- Copy and paste page 1 code and change id to four-->
+<div class="page" id="four">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Question 4-->
+		<h1>Question 4</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<!-- Added Question 4-->
+		<p>Are your symptoms seasonal or chronic?</p>
+		<!-- Change href= to "five"-->
+   		<p> <a href="#five"  onclick="allergyAdd();" class="w3-btn w3-black">Yes</a> </p>
+		<p> <a href="#five"  onclick="coldAdd();" class="w3-btn w3-black">No</a> </p>
+	</div>
+</div>
+
+
+<!--Results page-->
+<div class="page" id="five">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<!-- Change text to Results-->
+		<h1>Results</h1>
+	</div>
+		<!-- This part relates back to the Results function-->
+    	<div id="content" class="w3-container w3-flat-carrot">
+		<!-- Added restart test button -->
+		<p id="resultsText"></p>
+		<p> <a href="#" onclick ="restartTest();" class="w3-btn w3-black"> Restart Test </a> </p>
+	</div>
+</div>
+		
+<footer class="w3-bottom w3-container w3-flat-carrot">
+</footer>
 	
 </body>
 </html>
