@@ -28,54 +28,58 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 -->
 	
 <head> 
-	<title>Stomach Flu Diagnosis Test</title>  
-]	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Stomach Flu or Food Poisoning Diagnosis Test</title>  
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="w3.css">
 	<link rel="stylesheet" href="w3-colors-flat.css">
 </head> 
 
 <script>
-	//Copied and pasted App 3 script code and adjusted variable and function names to stomach flu or stomach flu//
+	// Copied and pasted App 3 script code and adjusted variable and function names to stomach flu or stomach flu.
 	var stomachflu_count = 0;
         var foodpoisoning_count = 0;
-	// The following code lets you know when the file was last modified. This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
+	// The following code lets you know when the file was last modified.
 	var docMod = document.lastModified;
 	alert("This file last modified  " + docMod);
 	console.log("This file last modified  " + docMod);
-	// If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
-	//Added result image variable//
+	
+	// Added result image variable.
 	var resultImage = document.getElementById("resultImage");
 	resultImage.style.display = "block";
         
 	function stomachfluAdd(){
-	//Increases the count for stomach flu//
-            stomachflu_count = stomachflu_count + 1;
+	// Increases the count for stomach flu.
+            stomachflu_count++;
         }
 
         function foodpoisoningAdd(){
-	//Increases the count for not having a stomach flu//
-            foodpoisoning_count = foodpoisoning_count + 1;
+	// Increases the count for not having a stomach flu.
+            foodpoisoning_count++;
 	}
 	
 	function showResults(){
-		//Added function to display results to users//
+		// Added function to display results to users.
 		var resultText = document.getElementById("resultsText");
-		//Calculates probability of stomach flu and probability of food poisoning//
-		var stomachfluPercent = ((stomachflu_count/6) * 100);
-		var foodpoisoningPercent = ((foodpoisoning_count/6) * 100);
-		//This code indicates the probability of a percent diagnosis for either stomach flu or food poisoning to occur//
-		resultText.innerHTML = "Probability it is stomach flu =" + stomachfluPercent + "%" "<br> Probability it is food poisoning =" + foodpoisoningPercent + "%";
+		// Added result image variable.
+		var resultImage = document.getElementById("resultImage");
+		// Calculates probability of stomach flu and probability of food poisoning.
+		var stomachfluPercent = ((stomachflu_count/5) * 100);
+		var foodpoisoningPercent = ((foodpoisoning_count/5) * 100);
+		
+		// This code indicates the probability of a percent diagnosis for either stomach flu or food poisoning to occur//
+		resultText.innerHTML = "Probability it is stomach flu =" + stomachfluPercent + "%" + "<br> Probability it is food poisoning =" + foodpoisoningPercent + "%";
+		resultImage.style.display = "block";
 	}
+	
 	function restartTest(){
 		stomachflu_count = 0;
 		foodpoisoning_count = 0;
 		//Sends the user back to the start of the test//
 		window.location.href = "#";
-
+	}
 </script>	
 
-	
 <!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. DON'T MESS WITH IT -->
 <style>
 img, object {
@@ -211,7 +215,7 @@ img, object {
 	<img id="resultImage" src="https://patients.amwell.com/siteassets/blog/1200_amwell_stomachfluvsfoodpoisoning_blog.jpg"
 		alt="Stomach Flu vs Food Poisoning" style="display: none;">
             <!-- Button to show the probability distribution of results -->
-            <a href="javascript:void(0);" onclick="showResults();" class="w3-btn w3-black">Get Results</a>
+		<p> <a href="javascript:void(0);" onclick="showResults();" class="w3-btn w3-black">Get Results</a> </p>
 		<p> <a href="#" onclick="restartTest();" class="w3-btn w3-black">Restart Test</a> </p>
 	</div>
 </div>
